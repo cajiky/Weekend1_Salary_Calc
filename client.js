@@ -38,6 +38,8 @@ function createNewEmployee(){
     let id = $('#id').val();
     let title = $('#title').val();
     let annualSalary = $('#annualSalary').val();
+    annualSalary = annualSalary.replace('$','');
+    annualSalary = annualSalary.replace(',','');
     //build a new Employee using values assigned ^^
     let freshEmployee = new Employee(firstName,lastName,id,title,annualSalary);
     employeeArray.push(freshEmployee);
@@ -59,6 +61,7 @@ function appendEmloyeeArray() {
         element.append(`<tr class="tableRow"><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>$${Number(employee.annualSalary).toLocaleString('en')}<button class="deleteEmployee" style="font-size:12px;margin:0px; ">Delete</button></td></tr>`)
     }
 }
+
 let monthlyCostStr;
 function calculateTotalSalary(){
     let accumulatedSalary = 0;
@@ -84,7 +87,7 @@ function deleteEmployee(){
     let employeeHtmlLine = $(this).parentsUntil($('.centeredText')).text();
 
     for(i = 0; i<employeeArray.length; i++){
-        if(employeeHtmlLine.toString === employeeArray[i].id.toString){
+        if(employeeHtmlLine.includes(employeeArray[i].id)){
             console.log('Succ found an ID that Matches');
             employeeArray.splice(i,1);
             $(this).parentsUntil($('.centeredText')).empty();
