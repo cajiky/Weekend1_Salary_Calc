@@ -47,6 +47,10 @@ button{
     width: 100%;
     
 }
+#finalSalaryOutput{
+    margin-right: 17%;
+    float: right;
+}
 
 .container{
     background-color: gray;
