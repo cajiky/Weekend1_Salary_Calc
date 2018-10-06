@@ -29,6 +29,7 @@ function submitNewEmployee(event) {
     console.log(employeeArray);
     clearInputFields();
     appendEmloyeeArray();
+    calculateTotalSalary();
 }
 
 
@@ -44,7 +45,19 @@ function appendEmloyeeArray() {
     let element = $('#employeeTable')
     element.empty();
     for(let employee of employeeArray){
-        element.append(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>${employee.anualSalary}`)
+        element.append(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>${employee.annualSalary}`)
     }
+}
+
+function calculateTotalSalary(){
+    let accumulatedSalary = 0;
+    for(let employee of employeeArray){
+        let cleanNum = employee.annualSalary.replace('$','');
+        cleanNum = parseInt(cleanNum.replace(',',''));
+        accumulatedSalary += cleanNum
+    }
+    let monthlyCostNum = accumulatedSalary/12;
+    let monthlyCostStr = Number(monthlyCostNum).toLocaleString('en');
+    console.log(monthlyCostStr);
 }
 
