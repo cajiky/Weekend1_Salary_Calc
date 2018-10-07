@@ -66,10 +66,13 @@ let monthlyCostStr;
 function calculateTotalSalary(){
     let accumulatedSalary = 0;
     for(let employee of employeeArray){
+        if(employee.annualSalary === NaN){ 
+            employee.annualSalary = 0;
+        }
         //replaces any commas or $ inputed by user and turns into num
         let cleanNum = employee.annualSalary.replace('$','');
         cleanNum = parseInt(cleanNum.replace(',',''));
-        accumulatedSalary += cleanNum
+        accumulatedSalary += cleanNum;
     }
     let monthlyCostNum = accumulatedSalary/12;
     //rounds to two decimal places.
@@ -83,19 +86,17 @@ function calculateTotalSalary(){
 
 //Creating a function to remove an Employee from the DOM & Array
 function deleteEmployee(){
-    console.log('delet button clicked')
     let employeeHtmlLine = $(this).parentsUntil($('.centeredText')).text();
 
     for(i = 0; i<employeeArray.length; i++){
-        if(employeeHtmlLine.includes(employeeArray[i].id)){
+        if(employeeHtmlLine.includes(employeeArray[i].id)){ //<< Could be bad for employees with smaller id nums
             console.log('Succ found an ID that Matches');
             employeeArray.splice(i,1);
             $(this).parentsUntil($('.centeredText')).empty();
             calculateTotalSalary();
             return
         }
-        console.log('couldnt find matching ID')
+        
     }
-    
 }
 
