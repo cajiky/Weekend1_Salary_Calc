@@ -1,5 +1,7 @@
 //checking sourcing
 let employeeArray = [];
+let monthlyCostNum;
+let monthlyCostStr;
 
 //creating a new class called Employee that I will use to store the user inputs into. 
 class Employee{
@@ -38,6 +40,9 @@ function createNewEmployee(){
     let id = $('#id').val();
     let title = $('#title').val();
     let annualSalary = $('#annualSalary').val();
+    if(annualSalary === ''){
+        annualSalary = 0;
+    }
     annualSalary = annualSalary.replace('$','');
     annualSalary = annualSalary.replace(',','');
     //build a new Employee using values assigned ^^
@@ -62,8 +67,7 @@ function appendEmloyeeArray() {
     }
 }
 
-let monthlyCostNum;
-let monthlyCostStr;
+
 function calculateTotalSalary(){
     let accumulatedSalary = 0;
     for(let employee of employeeArray){

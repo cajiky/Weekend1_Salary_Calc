@@ -70,9 +70,7 @@ table, th, td{
     padding: 5px;
 }
 
-h2{
-    margin-right: ;
-}
+
 th, td{
     text-align: left;
 }
@@ -92,7 +90,6 @@ tbody{
     height: 20px; !important;
     background-color: white;
     border: 1px solid black;
-
 }
 
 .red{
