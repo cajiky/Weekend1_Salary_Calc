@@ -30,6 +30,10 @@ button{
     margin-top: 20px;
 }
 
+h2{
+    margin-left: 17%;
+}
+
 .inputFields{
     display: flex;
     justify-content: center;
