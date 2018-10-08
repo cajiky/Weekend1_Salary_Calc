@@ -71,7 +71,7 @@ table, th, td{
 }
 
 h2{
-    margin-left:150px;
+    margin-right: ;
 }
 th, td{
     text-align: left;
@@ -93,4 +93,12 @@ tbody{
     background-color: white;
     border: 1px solid black;
 
+}
+
+.red{
+    background-color: red;
+}
+
+.normal{
+    background-color: black;
 }

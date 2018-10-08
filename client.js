@@ -62,6 +62,7 @@ function appendEmloyeeArray() {
     }
 }
 
+let monthlyCostNum;
 let monthlyCostStr;
 function calculateTotalSalary(){
     let accumulatedSalary = 0;
@@ -77,11 +78,18 @@ function calculateTotalSalary(){
     let monthlyCostNum = accumulatedSalary/12;
     //rounds to two decimal places.
     monthlyCostNum = Math.round(monthlyCostNum*100)/100;
+    monthlyCostNum = Math.round(monthlyCostNum);
     //adds Commas to numbers
     let monthlyCostStr = Number(monthlyCostNum).toLocaleString('en');
     //Time to append the new "monthlyCostStr" to the DOM
     $('#finalSalaryOutput').empty();
     $('#finalSalaryOutput').append(`<h2>Total Cost: $${monthlyCostStr}`)
+    if(monthlyCostNum > 20000){
+        $('#finalSalaryOutput').css('background-color','red');
+    }
+    else{
+        $('#finalSalaryOutput').css('background-color','black');
+    }
 }
 
 //Creating a function to remove an Employee from the DOM & Array
@@ -94,9 +102,16 @@ function deleteEmployee(){
             employeeArray.splice(i,1);
             $(this).parentsUntil($('.centeredText')).empty();
             calculateTotalSalary();
+            if(monthlyCostNum > 20000){
+                $('#finalSalaryOutput').css('background-color','red');
+            }
+            else{
+                $('#finalSalaryOutput').css('background-color','black');
+            }
             return
-        }
-        
+        }     
     }
 }
+
+
 
