@@ -78,7 +78,6 @@ function calculateTotalSalary(){
     let monthlyCostNum = accumulatedSalary/12;
     //rounds to two decimal places.
     monthlyCostNum = Math.round(monthlyCostNum*100)/100;
-    monthlyCostNum = Math.round(monthlyCostNum);
     //adds Commas to numbers
     let monthlyCostStr = Number(monthlyCostNum).toLocaleString('en');
     //Time to append the new "monthlyCostStr" to the DOM
